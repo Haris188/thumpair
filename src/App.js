@@ -1,24 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect} from 'react'
+import {useRoutes} from 'react-router-dom'
+import routes from './routes'
+import {
+  ThemeProvider,
+  createMuiTheme
+} from '@material-ui/core'
+import {addVisitCount} from './spreadsheet/analytics'
+
+const themeData = {
+  palette:{
+    primary:{
+      main: '#1446A0'
+    },
+    secondary:{
+      main:'#DB3069'
+    }
+  }
+}
 
 function App() {
+  const routing = useRoutes(routes)
+  const theme = createMuiTheme(themeData)
+
+  useEffect(()=>{
+    addVisitCount()
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme = {theme}>
+      <div className="App" style = {{height:'100%'}}>
+        {routing}
+      </div>
+    </ThemeProvider>
   );
 }
 
