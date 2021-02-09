@@ -13,6 +13,8 @@ import {
 } from '@material-ui/core'
 import {Container} from '@material-ui/core'
 import {ReactComponent as ThumbsIllustration} from '../../assets/thumbs.svg'
+import testThumb from '../../assets/default_thumb.jpg'
+import * as fs from 'fs'
 
 
 const ButtonDiv = styled.div`
@@ -33,6 +35,10 @@ const ButtonDiv = styled.div`
         color:#DB3069;
         cursor:pointer;
     }
+
+    @media only screen and (min-width: 900px){
+        flex-direction: row;
+    }
 `
 const PromoDiv = styled.div`
 margin-top: 1em;
@@ -47,6 +53,19 @@ const PromoText = styled.div`
 const Input = styled.input`
     display:none;
 `
+const ThumbImage = styled.img`
+    max-width: 100%;
+    border-radius: 10px;
+
+    @media only screen and (min-width: 900px){
+        max-width: 300px;
+    }
+`
+const TextDiv = styled.div`
+    @media only screen and (min-width: 900px){
+        margin-left: 1em;
+    }
+`
 
 const inputRef = React.createRef()
 
@@ -55,26 +74,48 @@ const View = (props)=>{
 
     return (
         <Container>
+            <ButtonDiv onClick={container.handleDemoClick}>
+                <ThumbImage 
+                    src={testThumb}
+                />
+                <TextDiv>
+                    <Typography
+                        variant="h4"
+                        style={{marginTop:'1em'}}
+                    >
+                        Demo with this Thumbnail
+                    </Typography>
+                    <Typography>
+                        Want a demo? Click me to go with the above thumbnail.
+                    </Typography>
+                </TextDiv>
+            </ButtonDiv>
             <Input 
                 ref={inputRef}
                 type = 'file'
+                accept="image/*"
                 onChange = {container.handlePick}
             />
-            <ButtonDiv onClick = {()=>{container.handleUploadClick(inputRef)}}>
+            <ButtonDiv 
+                onClick = {()=>{container.handleUploadClick(inputRef)}}
+                style={{marginTop: '1em'}}    
+            >
                 <AddPhotoAlternate 
                     style={{fontSize:'15em'}}
                 />
-                <Typography variant="h4">
-                    Add new Thumbnail
-                </Typography>
-                <Typography>
-                    Click to upload a thumbnail and Test its Visibility
-                </Typography>
-                {container.thumb
-                &&
-                <Typography variant="h5" color="secondary">
-                    {container.thumb.name} is selected. Click "Compare"
-                </Typography>}
+                <TextDiv>
+                    <Typography variant="h4">
+                        Add new Thumbnail
+                    </Typography>
+                    <Typography>
+                        Click to upload a thumbnail and Test its Visibility
+                    </Typography>
+                    {container.thumb
+                    &&
+                    <Typography variant="h5" color="secondary">
+                        {container.thumb.name} is selected. Click "Compare"
+                    </Typography>}
+                </TextDiv>
             </ButtonDiv>
             {container.thumb
             &&

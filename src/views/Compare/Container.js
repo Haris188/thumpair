@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import View from './View'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {shuffle} from 'lodash'
+import testThumb from '../../assets/default_thumb.jpg'
 
 const Container = (props)=>{
    
@@ -51,10 +52,15 @@ const Container = (props)=>{
 
     useEffect(()=>{
         if(thumb){
-            const url 
-            = URL.createObjectURL(thumb)
+            if(thumb === "demo"){
+                setThumbUrl(testThumb)
+            }
+            else{
+                const url 
+                = URL.createObjectURL(thumb)
 
-            setThumbUrl(url)
+                setThumbUrl(url)
+            }
         }
     },[thumb])
 
@@ -162,7 +168,7 @@ const Container = (props)=>{
                 changeThumbTitleField,
                 changeSearchQuery,
                 submitYtQuery,
-                shuffleVideos
+                shuffleVideos,
             }}
         />
     )

@@ -25,3 +25,11 @@ export const addVisitCount = async ()=>{
     a2.value = a2.value + 1
     await sheet.saveUpdatedCells()
 }
+
+export const addDemoClick = async ()=>{
+    const sheet = await loadSheet()
+    await sheet.loadCells('A1:C2')
+    const a2 = sheet.getCell(1,2)
+    a2.value = a2.value + 1
+    await sheet.saveUpdatedCells()
+}

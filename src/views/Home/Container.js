@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import View from './View'
-import {addCompareClick} from '../../spreadsheet/analytics'
+import {addCompareClick, addDemoClick} from '../../spreadsheet/analytics'
 
 const Home = ()=>{
     const navigate = useNavigate()
@@ -75,6 +75,11 @@ const Home = ()=>{
         updateAnalytics()
     }
 
+    const handleDemoClick=()=>{
+        addDemoClick()
+        navigate('/compare',{state: {thumb:'demo'}})
+    }
+
     return (
         <View 
             container={{
@@ -87,6 +92,7 @@ const Home = ()=>{
                 handleDialogCancel,
                 handleDialogContinue,
                 handleCompareClick,
+                handleDemoClick,
                 dialogOpen,
                 emailField,
                 emailError
