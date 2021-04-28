@@ -1,4 +1,5 @@
 # thumpair
+APP: http://thumpair.tk
 
 ## Quick Setup
 ```
