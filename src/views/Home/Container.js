@@ -21,7 +21,9 @@ const Home = ()=>{
     }
 
     const handlePick = ({target})=>{
+        
         setThumb(target.files[0])
+        navigate('/compare', {state: {thumb:target.files[0]}})
     }
 
     const navigateToCompare = ()=>{

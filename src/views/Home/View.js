@@ -1,18 +1,19 @@
 import React from 'react'
-import {AddPhotoAlternate} from '@material-ui/icons'
+import { AddPhotoAlternate } from '@material-ui/icons'
 import styled from 'styled-components'
-import { 
-    Typography, 
+import {
+    Typography,
     Button,
     Dialog,
     DialogActions,
     DialogContent,
     DialogContentText,
-    DialogTitle ,
-    TextField
+    DialogTitle,
+    TextField,
+    Grid
 } from '@material-ui/core'
-import {Container} from '@material-ui/core'
-import {ReactComponent as ThumbsIllustration} from '../../assets/thumbs.svg'
+import { Container } from '@material-ui/core'
+import { ReactComponent as ThumbsIllustration } from '../../assets/thumbs.svg'
 import testThumb from '../../assets/default_thumb.jpg'
 import * as fs from 'fs'
 
@@ -30,9 +31,9 @@ const ButtonDiv = styled.div`
     border-radius: 5px;
 
     &:hover{
-        background: #EBEBD3;
+        background: #FFFFFA;
         box-shadow: 0px 3px 60px rgba(0,0,0,0.1);
-        color:#DB3069;
+        color:#FF312E;
         cursor:pointer;
     }
 
@@ -54,7 +55,7 @@ const Input = styled.input`
     display:none;
 `
 const ThumbImage = styled.img`
-    max-width: 100%;
+    width: 100px;
     border-radius: 10px;
 
     @media only screen and (min-width: 900px){
@@ -66,71 +67,110 @@ const TextDiv = styled.div`
         margin-left: 1em;
     }
 `
+const ListItem = styled.div`
+    display:flex;
+    align-items:center;
+    margin-bottom: 1em;
+`
+const ItemBullet = styled.span`
+    display:fles;
+    justify-content: center;
+    align-items:center;
+    border-radius:50%;
+    height:40px;
+    width:40px;
+    background: #f2f2f2;
+    margin-right: 1em;
+    font-weight:bold;   
+`
 
 const inputRef = React.createRef()
 
-const View = (props)=>{
-    const {container} = props
+const View = (props) => {
+    const { container } = props
 
     return (
         <Container>
-            <ButtonDiv onClick={container.handleDemoClick}>
-                <ThumbImage 
-                    src={testThumb}
-                />
-                <TextDiv>
-                    <Typography
-                        variant="h4"
-                        style={{marginTop:'1em'}}
-                    >
-                        Demo with this Thumbnail
-                    </Typography>
-                    <Typography>
-                        Want a demo? Click me to go with the above thumbnail.
-                    </Typography>
-                </TextDiv>
-            </ButtonDiv>
-            <Input 
-                ref={inputRef}
-                type = 'file'
-                accept="image/*"
-                onChange = {container.handlePick}
-            />
-            <ButtonDiv 
-                onClick = {()=>{container.handleUploadClick(inputRef)}}
-                style={{marginTop: '1em'}}    
-            >
-                <AddPhotoAlternate 
-                    style={{fontSize:'15em'}}
-                />
-                <TextDiv>
-                    <Typography variant="h4">
-                        Add new Thumbnail
-                    </Typography>
-                    <Typography>
-                        Click to upload a thumbnail and Test its Visibility
-                    </Typography>
-                    {container.thumb
-                    &&
-                    <Typography variant="h5" color="secondary">
-                        {container.thumb.name} is selected. Click "Compare"
-                    </Typography>}
-                </TextDiv>
-            </ButtonDiv>
-            {container.thumb
-            &&
-            <Button
-                fullWidth
-                variant='contained'
-                color="primary"
-                style={{marginTop:"1em"}}
-                onClick={container.handleCompareClick}
-            >
-                Compare
-            </Button>}
-            <PromoDiv>
+            <div style={{height: '90vh'}}>
+                <Grid container>
+                    <Grid item md={6} style={{ paddingRight: '5em', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+                        <Typography variant='h4' style={{ marginBottom: '1em' }}>
+                            Check if your thumbnail catches eyes
+                        </Typography>
+                        <ListItem>
+                            <ItemBullet><Typography>1</Typography></ItemBullet>
+                            <span><Typography>Upload your thumbnail</Typography></span>
+                        </ListItem>
+                        <ListItem>
+                            <ItemBullet><Typography>2</Typography></ItemBullet>
+                            <span><Typography>Search your competition</Typography></span>
+                        </ListItem>
+                        <ListItem>
+                            <ItemBullet><Typography>3</Typography></ItemBullet>
+                            <span><Typography>Compare in the grid</Typography></span>
+                        </ListItem>
+                    </Grid>
+                    <Grid item md={6}>
+                        <ButtonDiv onClick={container.handleDemoClick}>
+                            <ThumbImage
+                                src={testThumb}
+                            />
+                            <TextDiv>
+                                <Typography
+                                    variant="h5"
+                                >
+                                    Demo with this Thumbnail
+                                </Typography>
+                                <Typography>
+                                    Want a demo? Click me to go with the above thumbnail.
+                                </Typography>
+                            </TextDiv>
+                        </ButtonDiv>
+                        <Input
+                            ref={inputRef}
+                            type='file'
+                            accept="image/*"
+                            onChange={container.handlePick}
+                        />
+                        <ButtonDiv
+                            onClick={() => { container.handleUploadClick(inputRef) }}
+                            style={{ marginTop: '1em' }}
+                        >
+                            <AddPhotoAlternate
+                                style={{ fontSize: '10em' }}
+                            />
+                            <TextDiv>
+                                <Typography variant="h5">
+                                    Add new Thumbnail
+                                </Typography>
+                                <Typography>
+                                    Click to upload a thumbnail and test it's visibility
+                                </Typography>
+                                {container.thumb
+                                    &&
+                                    <Typography variant="h5" color="secondary">
+                                        {container.thumb.name} is selected. Click "Compare"
+                                    </Typography>}
+                            </TextDiv>
+                        </ButtonDiv>
+                        {container.thumb
+                            &&
+                            <Button
+                                fullWidth
+                                variant='contained'
+                                color="primary"
+                                style={{ marginTop: "1em" }}
+                                onClick={container.handleCompareClick}
+                            >
+                                Compare
+                            </Button>}
+                    </Grid>
+                </Grid>
+            </div>
+
+            {/* <PromoDiv>
                 <PromoText>
-                    <Typography 
+                    <Typography
                         variant="h4"
                         color="secondary"
                     >
@@ -141,38 +181,38 @@ const View = (props)=>{
                     </Typography>
                 </PromoText>
                 <div>
-                    <ThumbsIllustration 
+                    <ThumbsIllustration
                         style={{
                             width: '100%'
                         }}
                     />
                 </div>
-            </PromoDiv>
+            </PromoDiv> */}
             <Dialog open={container.dialogOpen} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Keep Upto Date</DialogTitle>
                 <DialogContent>
-                <DialogContentText>
-                    To inform about further updates and improvements we will need some way to contact you!
-                </DialogContentText>
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Email Address"
-                    type="email"
-                    fullWidth
-                    value={container.emailField}
-                    error={container.emailError}
-                    onChange = {container.handleEmailFieldChange}
-                />
+                    <DialogContentText>
+                        To inform about further updates and improvements we will need some way to contact you!
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                        value={container.emailField}
+                        error={container.emailError}
+                        onChange={container.handleEmailFieldChange}
+                    />
                 </DialogContent>
                 <DialogActions>
-                <Button onClick={container.handleDialogCancel}  color="primary">
-                    Cancel
-                </Button>
-                <Button onClick={container.handleDialogContinue}  color="secondary" variant="contained">
-                    Continue
-                </Button>
+                    <Button onClick={container.handleDialogCancel} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={container.handleDialogContinue} color="secondary" variant="contained">
+                        Continue
+                    </Button>
                 </DialogActions>
             </Dialog>
         </Container>

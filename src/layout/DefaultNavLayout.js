@@ -20,21 +20,22 @@ const DefaultNavLayout = ()=>{
         <div>
             <AppBar
                 style={{
-                    background:'#fff'
+                    background:'#fff',
+                    boxShadow: 'none'
                 }}
             >
                 <Toolbar>
                     <Typography onClick={()=>{navigate('/')}} variant='h6' style={{color:'black', ':hover':{cursor:'pointer'}}}>
-                        Thumpair
+                        Thumpare
                     </Typography>
-                    <Button
+                    {/* <Button
                         style={{
                             marginLeft: '1em'
                         }}
                         onClick= {()=>{navigate('/contact')}}
                     >
                         Contact
-                    </Button>
+                    </Button> */}
                 </Toolbar>
             </AppBar>
             <MarginedContainer>

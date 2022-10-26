@@ -4,11 +4,7 @@ import {
     Typography
 } from '@material-ui/core'
 
-const ThumbContainer = styled.div`
-    padding: 1em;
-    width:100%;
-    max-width: 350px;
-`
+
 const Image = styled.img`
     position: absolute;
     left: 0;
@@ -22,7 +18,7 @@ const Flex = styled.div`
     margin-top: 0.5em;
 `
 const ChannelIcon = styled.div`
-    background: #DB3069;
+    background: #b9babd;
     height: 35px;
     width:35px;
     border-radius: 50%;
@@ -40,19 +36,27 @@ const AspectRatioBox = styled.div`
     }
 `
 
-const VideoThumb = (props)=>{
-    const {video} =  props
+const VideoThumb = (props) => {
+    const { video } = props
+
+    const ThumbContainer = styled.div`
+    padding: 1em;
+    width:100%;
+    max-width: 350px;
+    ${video.prominate ? 'background:#FF312E;': ''}
+`
+
     return (
-        <ThumbContainer>
+        <ThumbContainer id={props.id}>
             <AspectRatioBox>
-                <Image src = {video.thumb} />
+                <Image src={video.thumb} />
             </AspectRatioBox>
             <Flex>
                 <ChannelIcon />
                 <div>
-                    <Typography 
+                    <Typography
                         variant="body2"
-                        style = {{fontWeight:'bold'}}
+                        style={{ fontWeight: 'bold' }}
                     >
                         {video.title}
                     </Typography>

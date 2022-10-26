@@ -11,10 +11,10 @@ import {addVisitCount} from './spreadsheet/analytics'
 const themeData = {
   palette:{
     primary:{
-      main: '#1446A0'
+      main: '#FFFFFA'
     },
     secondary:{
-      main:'#DB3069'
+      main:'#FF312E'
     }
   }
 }
