@@ -8,7 +8,8 @@ import {
 } from '@material-ui/core'
 import {
     Search,
-    Shuffle
+    Shuffle,
+    FindInPage
 } from '@material-ui/icons'
 import styled from 'styled-components'
 
@@ -109,7 +110,7 @@ const View = (props) => {
                 variant="contained"
                 color="secondary"
                 onClick={container.findThumbnail}
-                startIcon={<Shuffle />}
+                startIcon={<FindInPage />}
             >
                 Find my Thumbnail
             </Button>
