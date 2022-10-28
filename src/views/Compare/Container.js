@@ -90,6 +90,11 @@ const Container = (props) => {
         }
     }, [prominateThumbnail])
 
+    useEffect(()=>{
+        const key = process.env[`REACT_APP_ANALYTICS_${process.env.REACT_APP_ENV}`]
+        fetch(`https://api.countapi.xyz/hit/${key}/visits`)
+    },[])
+
     // container functions
     const fetchInitialVideos = async () => {
         const fetchRes = await fetch(getUrl)
