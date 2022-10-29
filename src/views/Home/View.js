@@ -95,6 +95,9 @@ const View = (props) => {
                 <Grid container>
                     <Grid item md={6} style={{ paddingRight: '5em', display:'flex', flexDirection:'column', justifyContent:'center' }}>
                         <Typography variant='h4' style={{ marginBottom: '1em' }}>
+                            A/B Test your thumbnail among your competition
+                        </Typography>
+                        <Typography variant='h5' style={{ marginBottom: '1em' }}>
                             Check if your thumbnail catches eyes
                         </Typography>
                         <ListItem>
