@@ -23,10 +23,6 @@ function App() {
   const routing = useRoutes(routes)
   const theme = createMuiTheme(themeData)
 
-  useEffect(()=>{
-    addVisitCount()
-  },[])
-
   return (
     <ThemeProvider theme = {theme}>
       <div className="App" style = {{height:'100%'}}>

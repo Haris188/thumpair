@@ -3,6 +3,7 @@ import View from './View'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { shuffle } from 'lodash'
 import testThumb from '../../assets/default_thumb.jpg'
+import Utils from '../../lib/util'
 
 const Container = (props) => {
 
@@ -39,6 +40,10 @@ const Container = (props) => {
     const getUrl = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${searchQuery}&key=${apiKey}&regionCode=US&relevanceLanguage=en`
     //  const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=US&key=${apiKey}`
 
+
+    useEffect(()=>{
+        Utils.ReactGA.pageview(window.location.pathname + window.location.search)
+    },[])
 
     // lifecycle functions
     useEffect(() => {

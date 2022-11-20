@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import View from './View'
 import {addCompareClick, addDemoClick} from '../../spreadsheet/analytics'
+import Utils from '../../lib/util'
 
 const Home = ()=>{
     const navigate = useNavigate()
@@ -15,6 +16,10 @@ const Home = ()=>{
 
     const [dialogOpen, setDialogOpen]
     = useState(false)
+
+    useEffect(()=>{
+        Utils.ReactGA.pageview(window.location.pathname + window.location.search)
+    },[])
 
     const handleUploadClick = (inputRef)=>{
         inputRef.current.click()
