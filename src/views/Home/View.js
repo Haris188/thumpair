@@ -91,14 +91,14 @@ const View = (props) => {
 
     return (
         <Container>
-            <div style={{height: '90vh'}}>
+            <div style={{ height: '90vh' }}>
                 <Grid container>
-                    <Grid item md={6} style={{ paddingRight: '5em', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+                    <Grid item md={6} style={{ paddingRight: '5em', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <Typography variant='h4' style={{ marginBottom: '1em' }}>
-                            A/B Test your thumbnail among your competition
+                            Check if your thumbnail is better than your competition
                         </Typography>
                         <Typography variant='h5' style={{ marginBottom: '1em' }}>
-                            Check if your thumbnail catches eyes
+                            A/B Test your thumbnail among your competition
                         </Typography>
                         <ListItem>
                             <ItemBullet><Typography>1</Typography></ItemBullet>
