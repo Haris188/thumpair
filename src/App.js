@@ -6,7 +6,6 @@ import {
   ThemeProvider,
   createMuiTheme
 } from '@material-ui/core'
-import {addVisitCount} from './spreadsheet/analytics'
 
 const themeData = {
   palette:{

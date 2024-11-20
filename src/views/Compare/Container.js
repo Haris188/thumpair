@@ -24,7 +24,7 @@ const Container = (props) => {
         = useState('My video title')
 
     const [searchQuery, setSearchQuery]
-        = useState("")
+        = useState("Mr.Beast")
 
     const [prominateThumbnail, setProminateThumbnail] = useState(false)
 
@@ -179,6 +179,8 @@ const Container = (props) => {
 
     const submitYtQuery = async (e) => {
         e.preventDefault()
+        const key = process.env[`REACT_APP_ANALYTICS_${process.env.REACT_APP_ENV}`]
+        fetch(`https://api.counterapi.dev/v1/${key}/compare/up`)
         await fetchInitialVideos()
     }
 
