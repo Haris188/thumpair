@@ -97,7 +97,7 @@ const Container = (props) => {
 
     useEffect(()=>{
         const key = process.env[`REACT_APP_ANALYTICS_${process.env.REACT_APP_ENV}`]
-        fetch(`https://api.countapi.xyz/hit/${key}/visits`)
+        fetch(`https://api.counterapi.dev/v1/${key}/compare/up`)
     },[])
 
     // container functions

@@ -21,6 +21,11 @@ const Home = ()=>{
         Utils.ReactGA.pageview(window.location.pathname + window.location.search)
     },[])
 
+    useEffect(()=>{
+        const key = process.env[`REACT_APP_ANALYTICS_${process.env.REACT_APP_ENV}`]
+        fetch(`https://api.counterapi.dev/v1/${key}/home/up`)
+    },[])
+
     const handleUploadClick = (inputRef)=>{
         inputRef.current.click()
     }

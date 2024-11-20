@@ -15,7 +15,7 @@ import {
 import { Container } from '@material-ui/core'
 import { ReactComponent as ThumbsIllustration } from '../../assets/thumbs.svg'
 import testThumb from '../../assets/default_thumb.jpg'
-import * as fs from 'fs'
+// import * as fs from 'fs'
 
 
 const ButtonDiv = styled.div`
