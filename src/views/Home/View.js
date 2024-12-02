@@ -55,7 +55,7 @@ const Input = styled.input`
     display:none;
 `
 const ThumbImage = styled.img`
-    width: 100px;
+    width: 500px;
     border-radius: 10px;
 
     @media only screen and (min-width: 900px){
@@ -122,7 +122,7 @@ const View = (props) => {
                                 <Typography
                                     variant="h5"
                                 >
-                                    Demo with this Thumbnail
+                                    <b>Demo</b> with this Thumbnail
                                 </Typography>
                                 <Typography>
                                     Want a demo? Click me to go with the above thumbnail.
@@ -140,7 +140,7 @@ const View = (props) => {
                             style={{ marginTop: '1em' }}
                         >
                             <AddPhotoAlternate
-                                style={{ fontSize: '10em' }}
+                                style={{ fontSize: '5em' }}
                             />
                             <TextDiv>
                                 <Typography variant="h5">
